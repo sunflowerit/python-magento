@@ -19,4 +19,8 @@ class Client(object):
             url, params=arguments, verify=self._verify_ssl,
             headers={'Authorization': 'Bearer %s' % self._token})
         res.raise_for_status()
-        return res.json()
+        json_content = res.json()
+        if isinstance(json_content, unicode):
+            # Wyomind API responses are double json encoded
+            json_content = json.loads(json_content)
+        return json_content
