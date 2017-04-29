@@ -167,7 +167,7 @@ class API(object):
             self.client.service.endSession(self.session)
         self.session = None
 
-    def call(self, resource_path, arguments, http_method=None):
+    def call(self, resource_path, arguments, http_method=None, storeview=None):
         """
         Proxy for SOAP call API
         """
@@ -175,7 +175,8 @@ class API(object):
             return self.client.call(self.session, resource_path, arguments)
         elif self.protocol == 'rest':
             return self.client.call(
-                resource_path, arguments, http_method=http_method)
+                resource_path, arguments, http_method=http_method,
+                storeview=None)
         else:
             return self.client.service.call(
                 self.session, resource_path, arguments)
