@@ -24,7 +24,7 @@ setup(
     zip_safe=False,
     platforms='any',
     install_requires=[
-        'suds>=0.3.9',
+        'suds-jurko>=0.6',
     ],
     classifiers=[
         'Development Status :: 6 - Mature',
